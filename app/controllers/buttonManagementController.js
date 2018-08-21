@@ -18,8 +18,7 @@ app.controller('ButtonManagementController', function ($controller, $scope, Pers
                             "itemTypeCodes": {"gloss":"Item Type Codes", "description": "A semi-colon separated list of type codes that qualify for the button. If left empty, all values qualify for the button.","type":"list"},
                             "itemStatusCodes": {"gloss":"Item Status Codes", "description": "A semi-colon separated list of status codes that qualify for the button. If left empty, all values qualify for the button.","type":"list"},
                             "itemTypeCodes": {"gloss":"Item Type Codes", "description": "A semi-colon separated list of type codes that qualify for the button. If left empty, all values qualify for the button.","type":"list"},
-                            "recordTypeValue": {"gloss":"Record Type","description":"The record type code that must be present in the marc leader to qualify for the button. If left empty, all values qualify for the button."},
-                            "recordTypePosition": {"gloss":"Record Type Position","description": "Unnecessary, and needs to be removed!"}
+                            "recordType": {"gloss":"Record Type","description":"The record type code that must be present in the marc leader to qualify for the button. If left empty, all values qualify for the button."}
                         };
 
     PersistedButtonRepo.ready().then(function() {
