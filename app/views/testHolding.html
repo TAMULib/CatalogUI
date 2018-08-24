@@ -1,0 +1,41 @@
+<div class="row" ng-controller="TestHoldingController">
+  <form class="form-inline bottom-spacer" name="getHoldingInfoForm" ng-submit="getHoldingInfo(bibId)">
+    <div class="form-group">
+      <label>BibID</label>
+      <input class="form-control" type="text" ng-model="bibId" />
+    </div>
+    <input class="btn btn-default" type="submit" value="Get Holdings" />
+  </form>
+  <div ng-if="loading">Loading...</div>
+  <div class="list-group" ng-repeat="holding in holdings track by $index">
+    <div class="list-group-item">
+      <h4>mfhd {{holding.mfhd}}</h4>
+      <p class="list-group-item-text">
+        {{holding.mfhd}}
+      </p>
+    </div>
+    <div class="list-group-item">
+      <h4>Buttons</h4>
+      <p>
+        <div class="getit">
+            <span ng-if="getHoldingButton(holding.mfhd,buttonConfig.linkText) == false" ng-repeat-start="buttonConfig in buttonConfigs" class="button-gifm {{buttonConfig.cssClasses}}">{{buttonConfig.linkText}}</span>
+            <a ng-if="getHoldingButton(holding.mfhd,buttonConfig.linkText) != false" ng-repeat-end href="https://{{getHoldingButton(holding.mfhd,buttonConfig.linkText).linkHref}}" class="{{getHoldingButton(holding.mfhd,buttonConfig.linkText).cssClasses}}" target="_blank">{{getHoldingButton(holding.mfhd,buttonConfig.linkText).linkText}}</a>
+        </div>
+      </p>
+    </div>
+    <div class="list-group-item" ng-if="key!='mfhd'" ng-repeat="(key,value) in holding track by $index">
+      <h4>{{key}}</h4>
+      <p ng-if="key!='catalogItems'" class="list-group-item-text">
+        {{value}}
+      </p>
+      <p ng-if="key=='catalogItems'" class="list-group-item-text">
+        <div ng-if="key=='catalogItems'" ng-repeat="(uri,details) in value track by $index">
+          <div><b>{{uri}}</b></div>
+          <div ng-repeat="(k,v) in details">
+            {{k}}: {{v}}
+          </div>
+        </div>
+      </p>
+    </div>
+  </div>
+</div>

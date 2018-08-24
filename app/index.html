@@ -83,7 +83,8 @@
 						<div class="col-12 col-lg-12">
 
 							<div class="btn-group btn-group-lg app-menu" ng-class="{'btn-group-justified': windowWidth > 750, 'btn-group-vertical vertical-justified': windowWidth <= 750}" role="group">
-                <a ng-class="{'active' : view == '/buttons'}" class="btn btn-default" href="buttons">Buttons</a>
+                <a ng-class="{'active' : view == '/buttons'}" class="btn btn-default" href="buttons">Manage Buttons</a>
+                <a ng-class="{'active' : view == '/testHolding'}" class="btn btn-default" href="test-holdings">Test Holdings</a>
 								<a ng-class="{'active' : view == '/users'}" class="btn btn-default" href="users">Users</a>
 							</div>
 						</div>
@@ -227,11 +228,12 @@
 	<script src="model/abstractAppModel.js"></script>
   <script src="model/persistedButtonModel.js"></script>
 
-	<!-- Controllers -->
-	<script src="controllers/adminController.js"></script>
-	<script src="controllers/userRepoController.js"></script>
-	<script src="controllers/navigationController.js"></script>
+  <!-- Controllers -->
+  <script src="controllers/adminController.js"></script>
+  <script src="controllers/userRepoController.js"></script>
+  <script src="controllers/navigationController.js"></script>
   <script src="controllers/buttonManagementController.js"></script>
+  <script src="controllers/testHoldingController.js"></script>
 
 	<!-- endbuild -->
 

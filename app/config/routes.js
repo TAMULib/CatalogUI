@@ -17,7 +17,9 @@ app.config(function($routeProvider) {
 		when('/buttons', {
 			templateUrl: 'views/buttons.html'
 		}).
-
+		when('/test-holdings', {
+			templateUrl: 'views/testHolding.html'
+		}).
 		// Error Routes
 		when('/error/403', {
 			templateUrl: 'views/errors/403.html',

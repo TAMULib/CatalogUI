@@ -241,3 +241,62 @@ main footer {
     width: 98%;
   }
 }
+
+.getit .button-gifm {
+  display:inline-block;
+  background-color: #FFFFFF;
+  border-color: #adadad;
+  color: #333333;
+  -moz-user-select: none;
+  background-image: none;
+  border: 1px solid #adadad;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857;
+  margin: 4px;
+  padding: 2px 4px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.getit .button-gifm:hover{
+  color:#333333;
+  border-color:#adadad;
+  background:#ebebeb;
+  text-decoration: none;
+}
+
+.getit{
+  margin-left:5px;
+  margin-right:5px;
+}
+
+.getit .buttons {
+  margin-top: 10px;
+}
+
+/* Colorizing buttons, bcp, 8/25/2014 */
+
+.getit .button-recallit {
+  background: #e2e4e2;
+  color: #000000;
+}
+
+.getit .button-borrowitnow {
+  background: #a6b5d8;
+  color: #000000;
+}
+
+.getit .button-cushing {
+  background: #c9c0d6;
+  color: #000000;
+}
+
+.getit .button-docdel {
+  background: #ebd8c0;
+  color: #000000;
+}
