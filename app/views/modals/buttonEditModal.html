@@ -1,4 +1,5 @@
-<form name="buttonEditForm" ng-submit="updateButton(activeButton)">
+<form name="buttonEditForm" ng-submit="updateButton(activeButton)" novalidate>
+  {{buttonEditForm}}
   <div class="modal-header {{attr.modalHeaderClass}}">
     <button type="button" class="close" ng-click="closeModal()" aria-label="Close">
       <span class="modal-close" aria-hidden="true">&times;</span>
@@ -8,13 +9,47 @@
   <div class="modal-body">
     <div class="bottom-spacer">
       <button type="button" class="btn btn-default" ng-click="closeModal()">Cancel</button>
-      <button type="submit" class="btn btn-primary">Update</button>
+      <button type="submit" class="btn btn-primary" ng-disabled="buttonEditForm.$invalid">Update</button>
     </div>
     <div class="form-group" ng-repeat="(name, details) in fieldDetails">
-      <label for="{{name}}">{{details.gloss}}</label>
-      <p ng-if="details.description" class="help-block">{{details.description}}</p>
-      <input ng-if="name!='linkTemplate' && fieldDetails[name].type!='list'" name="{{name}}" ng-model="activeButton[name]" class="form-control" />
-      <input ng-if="name!='linkTemplate' && fieldDetails[name].type=='list'" name="{{name}}" ng-model="activeButton[name]" ng-list=";" class="form-control" />
+<!--      <label for="{{name}}">{{details.gloss}}</label>
+      <p ng-if="details.description" class="help-block">{{details.description}}</p>-->
+      <!--<input ng-if="name!='linkTemplate' && fieldDetails[name].type!='list'" name="{{name}}" ng-model="activeButton[name]" class="form-control" />-->
+      <validatedinput ng-if="name!='linkTemplate' && fieldDetails[name].type!='list'" model="activeButton" property="{{name}}" label="{{details.gloss}}" form="buttonEditForm" validations="persistedButtonRepo.getValidations()" results="persistedButtonRepo.getValidationResults()" tool-tip="{{details.description}}"></validatedinput>
+<!--
+      <div ng-if="name!='linkTemplate' && fieldDetails[name].type=='list'">
+        <label for="{{name}}-input">{{details.gloss}}</label>
+        <div ng-class="{ 'input-group': details.description !== undefined }">
+          <input
+            ng-attr-id="{{name}}Update"
+            name="{{name}}"
+            type="text"
+            class="form-control"
+            aria-describedby="{{name}}-input"
+            ng-model="activeButton[name]"
+            ng-keydown="keydown($event)"
+            ng-blur="blur($event)"
+            ng-required="persistedButtonRepo.getValidations()[name].required.value"
+            ng-minlength="persistedButtonRepo.getValidations()[name].minlength.value"
+            ng-maxlength="persistedButtonRepo.getValidations()[name].maxlength.value"
+            ng-pattern="persistedButtonRepo.getValidations()[name].pattern.value"/>
+          <span
+            ng-if="details.description"
+            class="input-group-addon">
+            <span ng-if="!inProgress" class="glyphicon glyphicon-info-sign opaque" tooltip="{{details.description}}"></span>
+            <span ng-if="inProgress" class="glyphicon glyphicon-refresh opaque spinning"></span>
+          </span>
+        </div>
+      </div>
+-->
+    <validationmessage
+      type="input"
+      property="{{name}}"
+      form="form"
+      validations="persistedButtonRepo[name].getValidations()"
+      results="results">
+    </validationmessage>
+
       <textarea ng-if="name=='linkTemplate'" name="{{name}}" ng-model="activeButton[name]" class="form-control"></textarea>
     </div>
   </div>

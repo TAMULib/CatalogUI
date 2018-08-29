@@ -21,6 +21,8 @@ app.controller('ButtonManagementController', function ($controller, $scope, Pers
                             "recordType": {"gloss":"Record Type","description":"The record type code that must be present in the marc leader to qualify for the button. If left empty, all values qualify for the button."}
                         };
 
+    $scope.persistedButtonRepo = PersistedButtonRepo;
+
     PersistedButtonRepo.ready().then(function() {
         $scope.viewButton = function(button) {
             buttonAction("buttonViewModal", button);
@@ -42,8 +44,10 @@ app.controller('ButtonManagementController', function ($controller, $scope, Pers
         };
 
         $scope.updateButton = function(button) {
-            PersistedButtonRepo.update(button).then(function() {
-                $scope.closeModal();
+            PersistedButtonRepo.update(button).then(function(result) {
+                if (angular.fromJson(result.body).meta.status === 'SUCCESS') {
+                    $scope.closeModal();
+                }
             });
         };
 
